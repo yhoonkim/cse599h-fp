@@ -14,9 +14,13 @@
 package edu.washington.cs.cse599h.android.facedetection;
 
 import android.bluetooth.BluetoothGattService;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Camera;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.SparseArray;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
@@ -28,6 +32,7 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 
 import edu.washington.cs.cse599h.android.ble.BleManager;
+import edu.washington.cs.cse599h.android.camera.CameraSource;
 import edu.washington.cs.cse599h.android.camera.FrameMetadata;
 import edu.washington.cs.cse599h.android.camera.GraphicOverlay;
 
@@ -45,6 +50,8 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
     private static final String DATA_PREFIX = "!F";
 
     private final FirebaseVisionFaceDetector detector;
+    private final Context mContext;
+    private final CameraSource mCameraSource;
 
     SparseArray<LinkedList<FirebaseVisionPoint>> lowerLipArray = new SparseArray<>();
     SparseArray<LinkedList<FirebaseVisionPoint>> upperLipArray = new SparseArray<>();
@@ -52,7 +59,10 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
     protected BleManager mBleManager;
     protected BluetoothGattService mUartService;
 
-    public FaceDetectionProcessor(BleManager bleManager, BluetoothGattService uartService) {
+    private final int imgWidth = 1280;
+    private final int imgHeight = 960;
+
+    public FaceDetectionProcessor(Context context, CameraSource cameraSource, BleManager bleManager, BluetoothGattService uartService) {
         FirebaseVisionFaceDetectorOptions options =
               new FirebaseVisionFaceDetectorOptions.Builder()
                     //.setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
@@ -65,6 +75,8 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
         detector = FirebaseVision.getInstance().getVisionFaceDetector(options);
         mBleManager = bleManager;
         mUartService = uartService;
+        mContext = context;
+        mCameraSource = cameraSource;
     }
 
     @Override
@@ -92,13 +104,15 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
             FaceGraphic faceGraphic = new FaceGraphic(graphicOverlay);
             graphicOverlay.add(faceGraphic);
             storeLipMovements(face);
-            faceGraphic.updateFace(face, frameMetadata.getCameraFacing(), isSpeaking(face));
-        }
+            faceGraphic.updateFace(face, frameMetadata.getCameraFacing(), isSpeaking(face), calculateAngle(face));
 
-        sendDataWithCRC(faces.size());
+            if (i == 0) {
+                sendDataWithCRC((float)calculateAngle(face));
+            }
+        }
     }
 
-    protected void sendDataWithCRC(int numFaces) {
+    protected void sendDataWithCRC(float data) {
         ByteBuffer buffer = ByteBuffer.allocate(2 + 3 * 4).order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
         // prefix
@@ -106,7 +120,7 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
 
         // values
         for (int j = 0; j < 1; j++) {
-            buffer.putFloat(numFaces);
+            buffer.putFloat(data);
         }
 
         byte[] result = buffer.array();
@@ -140,8 +154,34 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
         if (lowerLipSignals.size() > 9)
             lowerLipSignals.pop();
 
-        upperLipSignals.add(upperLip.get(upperLip.size()/2));
-        lowerLipSignals.add(lowerLip.get(lowerLip.size()/2));
+        if (upperLip.size() > 1 && lowerLip.size() > 1) {
+            upperLipSignals.add(upperLip.get(upperLip.size() / 2));
+            lowerLipSignals.add(lowerLip.get(lowerLip.size() / 2));
+        }
+    }
+
+    protected double calculateAngle(FirebaseVisionFace face) {
+        int x = face.getBoundingBox().centerX();
+        //int y = face.getBoundingBox().centerY();
+
+        int centerX;
+        //int centery = imgHeight/2;
+
+        double viewAngle;
+
+        int orientation = mContext.getResources().getConfiguration().orientation;
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            centerX = imgWidth/2;
+            viewAngle = mCameraSource.getCameraHorizontalViewAngle();
+        } else {
+            // In portrait
+            centerX = imgHeight/2;
+            viewAngle = mCameraSource.getCameraVerticalViewAngle();
+        }
+
+        return (double)(x-centerX)/(double)centerX*(viewAngle/2.0);
     }
 
     //stdev-based speaking recognition

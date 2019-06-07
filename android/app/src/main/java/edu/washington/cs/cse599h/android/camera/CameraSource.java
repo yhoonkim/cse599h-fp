@@ -262,6 +262,9 @@ public class CameraSource {
         return facing;
     }
 
+    public double getCameraHorizontalViewAngle() { return camera.getParameters().getHorizontalViewAngle(); }
+    public double getCameraVerticalViewAngle() { return camera.getParameters().getVerticalViewAngle(); }
+
     /**
      * Opens the camera and applies the user settings.
      *

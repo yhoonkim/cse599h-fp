@@ -52,6 +52,7 @@ public class FaceGraphic extends Graphic {
     private double isSpeakingProb;
 
     private volatile FirebaseVisionFace firebaseVisionFace;
+    private double angleFromCenter;
 
     public FaceGraphic(GraphicOverlay overlay) {
         super(overlay);
@@ -76,10 +77,11 @@ public class FaceGraphic extends Graphic {
      * Updates the face instance from the detection of the most recent frame. Invalidates the relevant
      * portions of the overlay to trigger a redraw.
      */
-    public void updateFace(FirebaseVisionFace face, int facing, double isSpeakingProb) {
+    public void updateFace(FirebaseVisionFace face, int facing, double isSpeakingProb, double angle) {
         firebaseVisionFace = face;
         this.facing = facing;
         this.isSpeakingProb = isSpeakingProb;
+        this.angleFromCenter = angle;
         postInvalidate();
     }
 
@@ -96,6 +98,9 @@ public class FaceGraphic extends Graphic {
         float y = translateY(face.getBoundingBox().centerY());
         canvas.drawCircle(x, y, FACE_POSITION_RADIUS, facePositionPaint);
         canvas.drawText("id: " + face.getTrackingId(), x + ID_X_OFFSET, y + ID_Y_OFFSET, idPaint);
+        canvas.drawText("(" + x +", "+y+")", x + ID_X_OFFSET, y + 2*ID_Y_OFFSET, idPaint);
+        canvas.drawText("(" + face.getBoundingBox().centerX() +", "+face.getBoundingBox().centerY()+")", x + ID_X_OFFSET, y + 3*ID_Y_OFFSET, idPaint);
+        canvas.drawText("angle: " + this.angleFromCenter, x + ID_X_OFFSET, y + 4*ID_Y_OFFSET, idPaint);
 //        canvas.drawText(
 //                "happiness: " + String.format("%.2f", face.getSmilingProbability()),
 //                x + ID_X_OFFSET * 3,

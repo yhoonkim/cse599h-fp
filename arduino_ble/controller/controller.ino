@@ -38,7 +38,7 @@ void setup(void)
 
   Bluefruit.begin();
   Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
-  Bluefruit.setName("Bluefruit52");
+  Bluefruit.setName("SPACS");
 
   // To be consistent OTA DFU should be added first if it exists
   bledfu.begin();

@@ -80,32 +80,32 @@ public final class LivePreviewActivity extends UartInterfaceActivity
             Log.d(TAG, "graphicOverlay is null");
         }
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        List<String> options = new ArrayList<>();
-        options.add(FACE_DETECTION);
-        options.add(TEXT_DETECTION);
-        options.add(BARCODE_DETECTION);
-        options.add(IMAGE_LABEL_DETECTION);
-        options.add(CLASSIFICATION);
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
-        spinner.setOnItemSelectedListener(this);
+//        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+//        List<String> options = new ArrayList<>();
+//        options.add(FACE_DETECTION);
+//        options.add(TEXT_DETECTION);
+//        options.add(BARCODE_DETECTION);
+//        options.add(IMAGE_LABEL_DETECTION);
+//        options.add(CLASSIFICATION);
+//        // Creating adapter for spinner
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
+//        // Drop down layout style - list view with radio button
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        // attaching data adapter to spinner
+//        spinner.setAdapter(dataAdapter);
+//        spinner.setOnItemSelectedListener(this);
+//
+//        ToggleButton facingSwitch = (ToggleButton) findViewById(R.id.facingSwitch);
+//        facingSwitch.setOnCheckedChangeListener(this);
 
-        ToggleButton facingSwitch = (ToggleButton) findViewById(R.id.facingSwitch);
-        facingSwitch.setOnCheckedChangeListener(this);
+        mBleManager = BleManager.getInstance(this);
+        onServicesDiscovered();
 
         if (allPermissionsGranted()) {
             createCameraSource(selectedModel);
         } else {
             getRuntimePermissions();
         }
-
-        mBleManager = BleManager.getInstance(this);
-        onServicesDiscovered();
     }
 
     @Override
@@ -130,16 +130,16 @@ public final class LivePreviewActivity extends UartInterfaceActivity
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Log.d(TAG, "Set facing");
-        if (cameraSource != null) {
-            if (isChecked) {
-                cameraSource.setFacing(CameraSource.CAMERA_FACING_FRONT);
-            } else {
-                cameraSource.setFacing(CameraSource.CAMERA_FACING_BACK);
-            }
-        }
-        preview.stop();
-        startCameraSource();
+//        Log.d(TAG, "Set facing");
+//        if (cameraSource != null) {
+//            if (isChecked) {
+//                cameraSource.setFacing(CameraSource.CAMERA_FACING_FRONT);
+//            } else {
+//                cameraSource.setFacing(CameraSource.CAMERA_FACING_BACK);
+//            }
+//        }
+//        preview.stop();
+//        startCameraSource();
     }
 
     private void createCameraSource(String model) {
@@ -152,7 +152,7 @@ public final class LivePreviewActivity extends UartInterfaceActivity
             switch (model) {
                 case FACE_DETECTION:
                     Log.i(TAG, "Using Face Detector Processor");
-                    cameraSource.setMachineLearningFrameProcessor(new FaceDetectionProcessor(mBleManager, mUartService));
+                    cameraSource.setMachineLearningFrameProcessor(new FaceDetectionProcessor(getApplicationContext(), cameraSource, mBleManager, mUartService));
                     break;
                 default:
                     Log.e(TAG, "Unknown model: " + model);
@@ -177,6 +177,7 @@ public final class LivePreviewActivity extends UartInterfaceActivity
                     Log.d(TAG, "resume: graphOverlay is null");
                 }
                 preview.start(cameraSource, graphicOverlay);
+                cameraSource.setFacing(CameraSource.CAMERA_FACING_FRONT);
             } catch (IOException e) {
                 Log.e(TAG, "Unable to start camera source.", e);
                 cameraSource.release();
