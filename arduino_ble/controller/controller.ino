@@ -196,6 +196,6 @@ void loop(void)
     Serial.print(x); Serial.println();
     //Serial.print(x); Serial.print('\t');
     //Serial.print(y); Serial.print('\t');
-    S//erial.print(z); Serial.println();;
+    //Serial.print(z); Serial.println();;
   }
 }
