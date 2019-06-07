@@ -21,6 +21,12 @@ android {
     }
 }
 
+repositories {
+    maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
+    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+    google()
+}
+
 dependencies {
 //    implementation project(":internal:lintchecks")
 //    implementation project(':internal:chooser')
@@ -40,5 +46,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision-face-model:17.0.2'
     implementation 'com.google.firebase:firebase-ml-vision-image-label-model:17.0.2'
     implementation 'com.google.firebase:firebase-ml-model-interpreter:19.0.0'
+
+    //location
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
+    implementation 'no.nordicsemi.android:dfu:1.0.4'
+    implementation 'com.commonsware.cwac:provider:0.5.1'
 }
 apply plugin: 'com.google.gms.google-services'

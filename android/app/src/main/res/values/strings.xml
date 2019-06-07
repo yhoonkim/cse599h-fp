@@ -41,4 +41,146 @@
     <string name="toggle_turn_off">Back</string>
     <string name="desc_camera_source_activity">Vision detectors demo with live camera preview</string>
     <string name="desc_still_image_activity">Vision detectors demo with a still image</string>
+
+    <!-- Firmware & Bootloader updates -->
+    <string name="firmware_downloading">Downloading firmware…</string>
+    <string name="bootloader_downloading">Downloading bootloader…</string>
+    <string name="firmware_startupdate">Starting firmware update…</string>
+    <string name="firmware_connectionnotavailable">No internet connection detected</string>
+    <string name="firmware_noconnecteddevice">Error: Device is no longer connected. Can\'t update</string>
+    <string name="firmware_updatefailed_format">Update failed: %s</string>
+    <string name="firmware_customfile_dialog_title_firmware">Select Custom Firmware</string>
+    <string name="firmware_customfile_dialog_title_bootloader">Select Custom Bootloader</string>
+    <string name="firmware_customfile_dialog_done">Start Update</string>
+    <string name="firmware_customfile_hexundefined">At least an Hex file should be selected</string>
+    <string name="firmware_customfile_dialog_hexfile">Hex File:</string>
+    <string name="firmware_customfile_dialog_inifile">Ini File:</string>
+    <string name="firmware_customfile_dialog_empty">&lt;not selected></string>
+    <string name="firmware_bootloadertooold_format">This firmware update is not compatible with your bootloader. You need to update your bootloader to version %s before installing this firmware release</string>
+    <string name="dfu_service_progress">%d%%</string>
+    <string name="dfu_feature_title">Bluefruit Update</string>
+
+    <!-- Scan Activity -->
+    <string name="scan_scanbutton_scan">Scan for peripherals</string>
+    <string name="scan_scanbutton_scanning">Scanning…</string>
+    <string name="scan_devicesheadertitle">PERIPHERALS</string>
+    <string name="scan_nodevicesfound">No peripherals found</string>
+    <string name="scan_device_localname">Local Name</string>
+    <string name="scan_device_address">Address</string>
+    <string name="scan_device_rssi_notavailable">N/A</string>
+    <string name="scan_device_connect">Connect</string>
+    <string name="scan_device_uuid">UUID</string>
+    <string name="scan_device_services">Service UUIDs</string>
+    <string name="scan_device_txpower">TX Power Level</string>
+    <string name="scan_device_viewadvraw">View raw data</string>
+
+    <string name="scan_device_advertising_title">Advertising Raw Data</string>
+
+
+    <string name="scan_device_beacon_manufacturer">Manufacturer</string>
+    <string name="scan_device_beacon_major">Major</string>
+    <string name="scan_device_beacon_minor">Minor</string>
+    <string name="scan_device_uribeacon_uri">Uri</string>
+    <string name="scan_connecting">Connecting…</string>
+    <string name="scan_gettingupdateinfo">Waiting for device info…</string>
+    <string name="scan_connectto_dialog_title_format">Choose mode to connect to %s</string>
+    <string name="scan_unexpecteddisconnect">Peripheral disconnected</string>
+    <string name="scan_tag_id">Id</string>
+    <string name="scan_connectservice_info">Info</string>
+    <string name="scan_connectservice_controller">Controller</string>
+    <string name="scan_connectservice_camera">Camera</string>
+    <string name="scan_softwareupdate_title">Update available</string>
+    <string name="scan_softwareupdate_messageformat">Software version %s is available</string>
+    <string name="scan_bootloaderandfirmwareupdate_messageformat">Software version %1$s and Bootloader version %2$s are available. This is a two-step process: bootloader will be updated first and firmware the next time you connect to the device</string>
+
+    <string name="scan_softwareupdate_install">Install</string>
+    <string name="scan_softwareupdate_notnow">Ask later</string>
+    <string name="scan_softwareupdate_dontask">Ignore</string>
+    <string name="scan_softwareupdate_downloaderror">Software download error</string>
+    <string name="scan_softwareupdate_updateerror">Software update error</string>
+    <string name="scan_softwareupdate_completed">Software updated successfully</string>
+
+
+    <string name="scan_failedupdatedetected_title">Failed update detected</string>
+    <string name="scan_failedupdatedetected_message">A failed update for this device has been detected.\nIt is strongly recommended to retry updating the device now</string>
+    <string name="scan_failedupdatedetected_ok">Update now</string>
+
+
+    <string name="scan_secondphaseupdatedetected_title">Continue update</string>
+    <string name="scan_secondphaseupdatedetected_message">Firmware will be updated now</string>
+    <string name="scan_secondphaseupdatedetected_ok">Continue</string>
+
+
+    <string name="scan_filters_title_filter_format">Filter: %s</string>
+    <string name="scan_filters_title_nofilter">No filter selected</string>
+    <string name="scan_filters_name_rssi_format">Rssi >= %d</string>
+    <string name="scan_filters_name_named">with name</string>
+    <string name="scan_filters_name_uart">with UART</string>
+    <string name="scan_filters_name_title">Name:</string>
+    <string name="scan_filters_name_tip">Find by name</string>
+    <string name="scan_filters_name_settings_contains">Name contains</string>
+    <string name="scan_filters_name_settings_exact">Name equals</string>
+    <string name="scan_filters_name_settings_casesensitive">Matching case</string>
+    <string name="scan_filters_name_settings_caseinsensitive">Ignoring case</string>
+
+    <string name="scan_filters_rssi_title">RSSI >=</string>
+    <string name="scan_filters_rssi_value_format">%d dBM</string>
+    <string name="scan_filters_unnamed">Show unnamed devices</string>
+    <string name="scan_filters_onlyuart">Must have UART service</string>
+
+
+
+    <string-array name="scan_devicetypes">
+        <item>Unkown</item>
+        <item>UART capable</item>
+        <item>Beacon</item>
+        <item>Eddystone</item>
+    </string-array>
+
+    <!-- Settings -->
+    <string name="settingsaction_confirmenablewifi_title">Wifi status</string>
+    <string name="settingsaction_confirmenablewifi_message">Wifi was previously disabled to improve Bluetooth connections. Would you like to enable it again?</string>
+
+    <!-- Bluetooth Adapter -->
+    <string name="dialog_error_no_ble">Bluetooth Low Energy not supported</string>
+    <string name="dialog_error_no_bluetooth">Bluetooth not available</string>
+
+    <!-- Location -->
+    <string name="dialog_error_nolocationservices_requiredforscan_marshmallow">Android 6 requires that Location Services are enabled to scan bluetooth peripherals.\nPlease, go to settings and enable it to start scanning peripherals</string>
+
+    <!-- Beacon -->
+    <string-array name="beacon_manufacturers_names">
+        <item>Apple  (004C)</item>
+        <item>Nordic (0059)</item>
+    </string-array>
+    <string-array name="beacon_manufacturers_ids">
+        <item>004C</item>
+        <item>0059</item>
+    </string-array>
+
+    <!-- Controller Activity -->
+    <string name="title_activity_controller">Controller</string>
+    <string-array name="controller_interface_items">
+        <item>Color Picker</item>
+        <item>Control Pad</item>
+    </string-array>
+    <string name="controller_magnetometermissing">Your device doesn\'t have magnetic sensor</string>
+    <string name="controller_location_disabled">Location is disabled. Go to settings and enable it to receive location data</string>
+    <string-array name="controller_stream_items">
+        <item>Quaternion</item>
+        <item>Accelerometer</item>
+        <item>Gyro</item>
+        <item>Magnetometer</item>
+        <item>Location</item>
+        <item>Magnetometer</item>
+    </string-array>
+    <string name="controller_location_unknown">Waiting for location data…</string>
+    <string name="controller_uartwarning">Please ensure that your Bluefruit LE module is set to DATA/UART mode when using this application</string>
+    <string name="controller_sectiontitle_stream">Stream Sensor Data</string>
+    <string name="controller_sectiontitle_interface">Interface</string>
+
+    <!-- Info Activity -->
+    <string name="title_activity_info">Info</string>
+    <string name="info_item_service">Service</string>
+    <string name="info_help_title">Info List Help</string>
 </resources>
