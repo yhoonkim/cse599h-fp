@@ -17,6 +17,7 @@ import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Camera;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.SparseArray;
@@ -30,6 +31,9 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceContour;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
+import com.google.firebase.ml.vision.face.FirebaseVisionFaceLandmark;
+
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import edu.washington.cs.cse599h.android.ble.BleManager;
 import edu.washington.cs.cse599h.android.camera.CameraSource;
@@ -38,6 +42,7 @@ import edu.washington.cs.cse599h.android.camera.GraphicOverlay;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,8 +58,8 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
     private final Context mContext;
     private final CameraSource mCameraSource;
 
-    SparseArray<LinkedList<FirebaseVisionPoint>> lowerLipArray = new SparseArray<>();
-    SparseArray<LinkedList<FirebaseVisionPoint>> upperLipArray = new SparseArray<>();
+    SparseArray<DescriptiveStatistics> normalizedY = new SparseArray<>();
+    SparseArray<DescriptiveStatistics> normalizedX = new SparseArray<>();
 
     protected BleManager mBleManager;
     protected BluetoothGattService mUartService;
@@ -62,13 +67,15 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
     private final int imgWidth = 1280;
     private final int imgHeight = 960;
 
+    private final int SLIDING_WINDOW_SIZE = 10;
+
     public FaceDetectionProcessor(Context context, CameraSource cameraSource, BleManager bleManager, BluetoothGattService uartService) {
         FirebaseVisionFaceDetectorOptions options =
               new FirebaseVisionFaceDetectorOptions.Builder()
                     //.setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
                     .setClassificationMode(FirebaseVisionFaceDetectorOptions.NO_CLASSIFICATIONS)
                     .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
-                    .setContourMode(FirebaseVisionFaceDetectorOptions.ALL_CONTOURS)
+                    //.setContourMode(FirebaseVisionFaceDetectorOptions.ALL_CONTOURS)
                     .enableTracking()
                     .build();
 
@@ -99,20 +106,52 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
             @NonNull FrameMetadata frameMetadata,
             @NonNull GraphicOverlay graphicOverlay) {
         graphicOverlay.clear();
+
+        //SparseArray<Double> isSpeakingList = new SparseArray<>();
+        List<FirebaseVisionFace> speakerList = new ArrayList<>();
+
         for (int i = 0; i < faces.size(); ++i) {
             FirebaseVisionFace face = faces.get(i);
             FaceGraphic faceGraphic = new FaceGraphic(graphicOverlay);
             graphicOverlay.add(faceGraphic);
             storeLipMovements(face);
-            faceGraphic.updateFace(face, frameMetadata.getCameraFacing(), isSpeaking(face), calculateAngle(face));
+            double isSpeaking = isSpeaking(face);
+            if (isSpeaking > 0) {
+                speakerList.add(face);
+            }
+            //isSpeakingList.put(face.getTrackingId(), isSpeaking);
+            faceGraphic.updateFace(face, frameMetadata.getCameraFacing(), isSpeaking(face), calculateAngle(face.getBoundingBox().centerX()));
+        }
 
-            if (i == 0) {
-                sendDataWithCRC((float)calculateAngle(face));
+        if (faces.size() > 0) {
+            if (speakerList.size() == 1) {
+                Log.d(TAG, "angle single");
+                sendDataWithCRC((float)(calculateAngle(speakerList.get(0).getBoundingBox().centerX())));
+            } else if (speakerList.size() > 0){
+                double avgX = 0.0;
+                for (FirebaseVisionFace f: speakerList) {
+                    avgX+=f.getBoundingBox().centerX();
+                }
+                avgX /= speakerList.size();
+
+                Log.d(TAG, "angle avg");
+                sendDataWithCRC((float)(calculateAngle((int)avgX)));
+            } else if (speakerList.size() == 0) {
+                double avgX = 0.0;
+                for (FirebaseVisionFace f: faces) {
+                    avgX+=f.getBoundingBox().centerX();
+                }
+                avgX /= faces.size();
+
+                Log.d(TAG, "angle avg");
+                sendDataWithCRC((float)(calculateAngle((int)avgX)));
             }
         }
+
     }
 
     protected void sendDataWithCRC(float data) {
+        Log.d(TAG, String.format("Angle: %.2f", data));
         ByteBuffer buffer = ByteBuffer.allocate(2 + 3 * 4).order(java.nio.ByteOrder.LITTLE_ENDIAN);
 
         // prefix
@@ -128,40 +167,35 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
         BleUtils.sendDataWithCRC(result, mBleManager, mUartService);
     }
 
-    protected  void storeLipMovements(FirebaseVisionFace face) {
+    protected void storeLipMovements(FirebaseVisionFace face) {
         //https://stackoverflow.com/questions/42107466/android-mobile-vision-api-detect-mouth-is-open
-        List<FirebaseVisionPoint> lowerLip = face.getContour(FirebaseVisionFaceContour.LOWER_LIP_TOP).getPoints();
-        List<FirebaseVisionPoint> upperLip = face.getContour(FirebaseVisionFaceContour.UPPER_LIP_BOTTOM).getPoints();
+        FirebaseVisionPoint lowerLip = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_BOTTOM).getPosition();
+        FirebaseVisionPoint upperLip = face.getLandmark(FirebaseVisionFaceLandmark.NOSE_BASE).getPosition();
+        FirebaseVisionPoint rightLip = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_RIGHT).getPosition();
+        FirebaseVisionPoint leftLip = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_LEFT).getPosition();
+        Rect faceRect = face.getBoundingBox();
 
         int faceID = face.getTrackingId();
 
-        if (upperLipArray.get(faceID)==null) {
-            LinkedList<FirebaseVisionPoint> q = new LinkedList<>();
-            upperLipArray.put(faceID, q);
+        if (normalizedX.get(faceID)==null) {
+            DescriptiveStatistics ds = new DescriptiveStatistics(SLIDING_WINDOW_SIZE);
+            normalizedX.put(faceID, ds);
         }
 
-        if (lowerLipArray.get(faceID)==null) {
-            LinkedList<FirebaseVisionPoint> q = new LinkedList<>();
-            lowerLipArray.put(faceID, q);
+        if (normalizedY.get(faceID)==null) {
+            DescriptiveStatistics ds = new DescriptiveStatistics(SLIDING_WINDOW_SIZE);
+            normalizedY.put(faceID, ds);
         }
 
-        LinkedList<FirebaseVisionPoint> upperLipSignals = upperLipArray.get(faceID);
-        LinkedList<FirebaseVisionPoint> lowerLipSignals = lowerLipArray.get(faceID);
+        double normX = (leftLip.getX() - rightLip.getX())/(faceRect.left-faceRect.right);
+        normalizedX.get(faceID).addValue(normX);
 
-        if (upperLipSignals.size() > 9)
-            upperLipSignals.pop();
-
-        if (lowerLipSignals.size() > 9)
-            lowerLipSignals.pop();
-
-        if (upperLip.size() > 1 && lowerLip.size() > 1) {
-            upperLipSignals.add(upperLip.get(upperLip.size() / 2));
-            lowerLipSignals.add(lowerLip.get(lowerLip.size() / 2));
-        }
+        double normY = (double)(lowerLip.getY() - upperLip.getY())/(double)(upperLip.getY()-faceRect.top);
+        normalizedY.get(faceID).addValue(normY);
     }
 
-    protected double calculateAngle(FirebaseVisionFace face) {
-        int x = face.getBoundingBox().centerX();
+    protected double calculateAngle(int x) {
+        //int x = face.getBoundingBox().centerX();
         //int y = face.getBoundingBox().centerY();
 
         int centerX;
@@ -187,32 +221,18 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
     //stdev-based speaking recognition
     protected double isSpeaking(FirebaseVisionFace face) {
         int faceID = face.getTrackingId();
-        LinkedList<FirebaseVisionPoint> upperLipSignals = upperLipArray.get(faceID);
-        LinkedList<FirebaseVisionPoint> lowerLipSignals = lowerLipArray.get(faceID);
+        DescriptiveStatistics dsX = normalizedX.get(faceID);
+        DescriptiveStatistics dsY = normalizedY.get(faceID);
 
-        if (upperLipSignals == null || lowerLipSignals == null || upperLipSignals.size() < 10 || lowerLipSignals.size() < 10)
+        if (dsX == null || dsY == null || dsX.getN() < SLIDING_WINDOW_SIZE || dsY.getN() < SLIDING_WINDOW_SIZE)
             return 0;
 
-        double diffYStd;
-        double diffYMean;
+        Log.d(TAG, String.format("DS-StdevY %.5f, meanY %.5f, KurtosisY: %.5f, SkewnessY: %.5f, " +
+                        "StdevX %.5f, meanX %.5f, KurtosisX: %.5f, SkewnessX: %.5f",
+                dsY.getStandardDeviation(), dsY.getMean(), dsY.getKurtosis(), dsY.getSkewness(),
+                dsX.getStandardDeviation(), dsX.getMean(), dsX.getKurtosis(), dsX.getSkewness()));
 
-        double sum = 0;
-        double sum2 = 0;
-
-        Log.d(TAG, "========Diff");
-        for (int i=0; i<upperLipSignals.size();i++)
-        {
-            sum+=(lowerLipSignals.get(i).getY() - upperLipSignals.get(i).getY());
-            sum2+=Math.pow((lowerLipSignals.get(i).getY() - upperLipSignals.get(i).getY()), 2);
-            Log.d(TAG, String.format("Diff %.2f", (lowerLipSignals.get(i).getY() - upperLipSignals.get(i).getY())));
-        }
-
-        diffYMean = sum/upperLipSignals.size();
-        double variance = (upperLipSignals.size() * sum2 - sum * sum) / (upperLipSignals.size() * upperLipSignals.size());
-        diffYStd = Math.sqrt(variance);
-        Log.d(TAG, String.format("Stdev %.2f, mean %.2f", diffYStd, diffYMean));
-
-        if (diffYStd > 10.0)
+        if (dsY.getStandardDeviation() + dsX.getStandardDeviation() > 0.030)
             return 1.0;
         else
             return 0.0;

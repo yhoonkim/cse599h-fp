@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Uart " />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="angle" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -33,32 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ControllerActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ControllerActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="319" column="13" lean-forward="false" selection-start-line="298" selection-start-column="12" selection-end-line="319" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4807#5453#0" expanded="true" />
-                <element signature="e#5452#5453#0" expanded="true" />
-                <element signature="e#10893#11998#0" expanded="true" />
-                <element signature="e#11997#11998#0" expanded="true" />
-                <element signature="e#13359#13409#0" expanded="true" />
-                <element signature="e#15585#15633#0" expanded="true" />
-                <element signature="e#23265#23989#0" expanded="true" />
-                <element signature="e#23988#23989#0" expanded="true" />
-                <element signature="e#25330#25377#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LivePreviewActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/LivePreviewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="287">
-              <caret line="101" column="29" lean-forward="true" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="29" />
+              <caret line="101" column="29" lean-forward="false" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="29" />
               <folding>
                 <element signature="e#0#9948#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -90,11 +69,31 @@
       <file leaf-file-name="FaceDetectionProcessor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceDetectionProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="110" column="13" lean-forward="true" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+            <state relative-caret-position="324">
+              <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="55" column="59" lean-forward="false" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VisionProcessorBase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/VisionProcessorBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1140">
+              <caret line="104" column="26" lean-forward="false" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,33 +127,10 @@
       <file leaf-file-name="FaceGraphic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceGraphic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="102" column="56" lean-forward="false" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
+            <state relative-caret-position="172">
+              <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="146" selection-end-column="60" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphicOverlay.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/camera/GraphicOverlay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="100" column="8" lean-forward="false" selection-start-line="100" selection-start-column="8" selection-end-line="106" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
           </provider>
         </entry>
       </file>
@@ -162,12 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sendDataWithCRC</find>
-      <find>mBleManager</find>
-      <find>bleManager</find>
-      <find>Facedete</find>
-      <find>onresu</find>
-      <find>uArtser</find>
       <find>kTxMaxCharacters</find>
       <find>this</find>
       <find>C</find>
@@ -179,7 +149,6 @@
       <find>senddatawith</find>
       <find>camera</find>
       <find>button</find>
-      <find>/2</find>
       <find>ge</find>
       <find>image</find>
       <find>frot</find>
@@ -188,9 +157,16 @@
       <find>Uart Service not discovered</find>
       <find>uart</find>
       <find>send</find>
-      <find>get</find>
       <find>fa</find>
+      <find>get</find>
       <find>faces.</find>
+      <find>getland</find>
+      <find>landmar</find>
+      <find>getcon</find>
+      <find>lowerLip</find>
+      <find>/2</find>
+      <find>boundingbox</find>
+      <find>is</find>
       <find>facedete</find>
     </findStrings>
     <replaceStrings>
@@ -1988,7 +1964,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/UriBeaconUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_controller.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ControllerActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/InfoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -1997,10 +1972,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ble/UartInterfaceActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ble/BleUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/camera/CameraSource.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceGraphic.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_live_preview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_live_preview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/LivePreviewActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceGraphic.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceDetectionProcessor.java" />
       </list>
     </option>
@@ -2049,146 +2025,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity_live_preview.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="washington" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cse599h" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="washington" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cse599h" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="facedetection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2552,6 +2388,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a29e860d-1683-41e3-907d-826ca6c6103d" name="Default" comment="" />
@@ -2569,7 +2408,7 @@
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3193167" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3823916" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2586,7 +2425,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18454936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987747" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2609,14 +2448,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ble/BleDevicesScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ble/BleManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2641,14 +2472,6 @@
             <element signature="e#0#1459#0" expanded="false" />
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/VisionProcessorBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="57" column="51" lean-forward="false" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2892,14 +2715,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_info.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -2949,64 +2764,64 @@
         <state relative-caret-position="378">
           <caret line="1100" column="88" lean-forward="false" selection-start-line="1100" selection-start-column="58" selection-end-line="1100" selection-end-column="88" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3847#3880#0" expanded="true" />
-            <element signature="e#3894#3933#0" expanded="true" />
-            <element signature="e#3947#3982#0" expanded="true" />
-            <element signature="e#14783#14841#0" expanded="true" />
-            <element signature="e#14875#14935#0" expanded="true" />
-            <element signature="e#23532#23584#0" expanded="true" />
-            <element signature="e#23602#23649#0" expanded="true" />
-            <element signature="e#24197#24247#0" expanded="true" />
-            <element signature="e#24659#24713#0" expanded="true" />
-            <element signature="e#25200#25233#0" expanded="true" />
-            <element signature="e#25441#25480#0" expanded="true" />
-            <element signature="e#25694#25729#0" expanded="true" />
-            <element signature="e#26660#26688#0" expanded="true" />
-            <element signature="e#26841#26875#0" expanded="true" />
-            <element signature="e#28741#28809#0" expanded="true" />
-            <element signature="e#29752#29786#0" expanded="true" />
-            <element signature="e#30245#30279#0" expanded="true" />
-            <element signature="e#31145#31169#0" expanded="true" />
-            <element signature="e#31295#31326#0" expanded="true" />
-            <element signature="e#43501#43534#0" expanded="true" />
-            <element signature="e#43537#43566#0" expanded="true" />
-            <element signature="e#46842#46882#0" expanded="true" />
-            <element signature="e#46924#46966#0" expanded="true" />
-            <element signature="e#47015#47052#0" expanded="true" />
-            <element signature="e#47662#48069#0" expanded="true" />
-            <element signature="e#48068#48069#0" expanded="true" />
-            <element signature="e#50328#50381#0" expanded="true" />
-            <element signature="e#50508#50542#0" expanded="true" />
-            <element signature="e#50640#50676#0" expanded="true" />
-            <element signature="e#51358#51393#0" expanded="true" />
-            <element signature="e#51741#51777#0" expanded="true" />
-            <element signature="e#52829#52867#0" expanded="true" />
-            <element signature="e#53141#53183#0" expanded="true" />
-            <element signature="e#53186#53226#0" expanded="true" />
-            <element signature="e#63165#63214#0" expanded="true" />
-            <element signature="e#63555#63598#0" expanded="true" />
-            <element signature="e#63921#63963#0" expanded="true" />
-            <element signature="e#66336#66377#0" expanded="true" />
-            <element signature="e#66530#66569#0" expanded="true" />
-            <element signature="e#66762#66807#0" expanded="true" />
-            <element signature="e#66865#66904#0" expanded="true" />
-            <element signature="e#67255#67296#0" expanded="true" />
-            <element signature="e#67448#67487#0" expanded="true" />
-            <element signature="e#68018#68058#0" expanded="true" />
-            <element signature="e#68156#68195#0" expanded="true" />
-            <element signature="e#68545#68586#0" expanded="true" />
-            <element signature="e#68738#68777#0" expanded="true" />
-            <element signature="e#69579#69630#0" expanded="true" />
-            <element signature="e#70001#70037#0" expanded="true" />
-            <element signature="e#70293#70337#0" expanded="true" />
-            <element signature="e#70594#70638#0" expanded="true" />
-            <element signature="e#70717#70756#0" expanded="true" />
-            <element signature="e#72101#72121#0" expanded="true" />
-            <element signature="e#72216#72236#0" expanded="true" />
-            <element signature="e#74191#74240#0" expanded="true" />
-            <element signature="e#76636#76685#0" expanded="true" />
-            <element signature="e#76797#76835#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3847#3880#0" expanded="false" />
+            <element signature="e#3894#3933#0" expanded="false" />
+            <element signature="e#3947#3982#0" expanded="false" />
+            <element signature="e#14783#14841#0" expanded="false" />
+            <element signature="e#14875#14935#0" expanded="false" />
+            <element signature="e#23532#23584#0" expanded="false" />
+            <element signature="e#23602#23649#0" expanded="false" />
+            <element signature="e#24197#24247#0" expanded="false" />
+            <element signature="e#24659#24713#0" expanded="false" />
+            <element signature="e#25200#25233#0" expanded="false" />
+            <element signature="e#25441#25480#0" expanded="false" />
+            <element signature="e#25694#25729#0" expanded="false" />
+            <element signature="e#26660#26688#0" expanded="false" />
+            <element signature="e#26841#26875#0" expanded="false" />
+            <element signature="e#28741#28809#0" expanded="false" />
+            <element signature="e#29752#29786#0" expanded="false" />
+            <element signature="e#30245#30279#0" expanded="false" />
+            <element signature="e#31145#31169#0" expanded="false" />
+            <element signature="e#31295#31326#0" expanded="false" />
+            <element signature="e#43501#43534#0" expanded="false" />
+            <element signature="e#43537#43566#0" expanded="false" />
+            <element signature="e#46842#46882#0" expanded="false" />
+            <element signature="e#46924#46966#0" expanded="false" />
+            <element signature="e#47015#47052#0" expanded="false" />
+            <element signature="e#47662#48069#0" expanded="false" />
+            <element signature="e#48068#48069#0" expanded="false" />
+            <element signature="e#50328#50381#0" expanded="false" />
+            <element signature="e#50508#50542#0" expanded="false" />
+            <element signature="e#50640#50676#0" expanded="false" />
+            <element signature="e#51358#51393#0" expanded="false" />
+            <element signature="e#51741#51777#0" expanded="false" />
+            <element signature="e#52829#52867#0" expanded="false" />
+            <element signature="e#53141#53183#0" expanded="false" />
+            <element signature="e#53186#53226#0" expanded="false" />
+            <element signature="e#63165#63214#0" expanded="false" />
+            <element signature="e#63555#63598#0" expanded="false" />
+            <element signature="e#63921#63963#0" expanded="false" />
+            <element signature="e#66336#66377#0" expanded="false" />
+            <element signature="e#66530#66569#0" expanded="false" />
+            <element signature="e#66762#66807#0" expanded="false" />
+            <element signature="e#66865#66904#0" expanded="false" />
+            <element signature="e#67255#67296#0" expanded="false" />
+            <element signature="e#67448#67487#0" expanded="false" />
+            <element signature="e#68018#68058#0" expanded="false" />
+            <element signature="e#68156#68195#0" expanded="false" />
+            <element signature="e#68545#68586#0" expanded="false" />
+            <element signature="e#68738#68777#0" expanded="false" />
+            <element signature="e#69579#69630#0" expanded="false" />
+            <element signature="e#70001#70037#0" expanded="false" />
+            <element signature="e#70293#70337#0" expanded="false" />
+            <element signature="e#70594#70638#0" expanded="false" />
+            <element signature="e#70717#70756#0" expanded="false" />
+            <element signature="e#72101#72121#0" expanded="false" />
+            <element signature="e#72216#72236#0" expanded="false" />
+            <element signature="e#74191#74240#0" expanded="false" />
+            <element signature="e#76636#76685#0" expanded="false" />
+            <element signature="e#76797#76835#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3016,7 +2831,7 @@
         <state relative-caret-position="292">
           <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3099,14 +2914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceGraphic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="102" column="56" lean-forward="false" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_live_preview.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3137,6 +2944,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/LivePreviewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="101" column="29" lean-forward="false" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#9948#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/ble/UartInterfaceActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -3145,21 +2963,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/LivePreviewActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/VisionProcessorBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="101" column="29" lean-forward="true" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="29" />
+        <state relative-caret-position="1140">
+          <caret line="104" column="26" lean-forward="false" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="146" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="55" column="59" lean-forward="false" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-math3/3.6.1/8fab23986ea8886af34818daf32a718e81dc98ba/commons-math3-3.6.1-sources.jar!/org/apache/commons/math3/stat/descriptive/DescriptiveStatistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="416" column="18" lean-forward="false" selection-start-line="416" selection-start-column="18" selection-end-line="416" selection-end-column="18" />
           <folding>
-            <element signature="e#0#9948#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#15175#15176#0" expanded="false" />
+            <element signature="e#15219#15220#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/washington/cs/cse599h/android/facedetection/FaceDetectionProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="110" column="13" lean-forward="true" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+        <state relative-caret-position="324">
+          <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

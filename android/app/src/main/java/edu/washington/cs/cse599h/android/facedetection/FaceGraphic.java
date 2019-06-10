@@ -99,8 +99,8 @@ public class FaceGraphic extends Graphic {
         canvas.drawCircle(x, y, FACE_POSITION_RADIUS, facePositionPaint);
         canvas.drawText("id: " + face.getTrackingId(), x + ID_X_OFFSET, y + ID_Y_OFFSET, idPaint);
         canvas.drawText("(" + x +", "+y+")", x + ID_X_OFFSET, y + 2*ID_Y_OFFSET, idPaint);
-        canvas.drawText("(" + face.getBoundingBox().centerX() +", "+face.getBoundingBox().centerY()+")", x + ID_X_OFFSET, y + 3*ID_Y_OFFSET, idPaint);
-        canvas.drawText("angle: " + this.angleFromCenter, x + ID_X_OFFSET, y + 4*ID_Y_OFFSET, idPaint);
+        //canvas.drawText("(" + face.getBoundingBox().centerX() +", "+face.getBoundingBox().centerY()+")", x + ID_X_OFFSET, y + 3*ID_Y_OFFSET, idPaint);
+        canvas.drawText("angle: " + this.angleFromCenter, x + ID_X_OFFSET, y + 3*ID_Y_OFFSET, idPaint);
 //        canvas.drawText(
 //                "happiness: " + String.format("%.2f", face.getSmilingProbability()),
 //                x + ID_X_OFFSET * 3,
@@ -132,38 +132,38 @@ public class FaceGraphic extends Graphic {
 
         if (face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK) != null) {
             canvas.drawText(String.format("isSpeaking: %.2f", isSpeakingProb),
-                            face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK).getPosition().getX() + ID_X_OFFSET * 6,
-                            face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK).getPosition().getY(),
-                            idPaint);
+                    translateX(face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK).getPosition().getX()) + ID_X_OFFSET * 6,
+                    translateY(face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK).getPosition().getY()),
+                    idPaint);
         }
 
         // Draws a bounding box around the face.
-//        float xOffset = scaleX(face.getBoundingBox().width() / 2.0f);
-//        float yOffset = scaleY(face.getBoundingBox().height() / 2.0f);
-//        float left = x - xOffset;
-//        float top = y - yOffset;
-//        float right = x + xOffset;
-//        float bottom = y + yOffset;
-//        canvas.drawRect(left, top, right, bottom, boxPaint);
+        float xOffset = scaleX(face.getBoundingBox().width() / 2.0f);
+        float yOffset = scaleY(face.getBoundingBox().height() / 2.0f);
+        float left = x - xOffset;
+        float top = y - yOffset;
+        float right = x + xOffset;
+        float bottom = y + yOffset;
+        canvas.drawRect(left, top, right, bottom, boxPaint);
 
         // draw landmarks
-        //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.MOUTH_BOTTOM);
+        drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.MOUTH_BOTTOM);
         //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.LEFT_CHEEK);
         //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.LEFT_EAR);
-        //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.MOUTH_LEFT);
+        drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.MOUTH_LEFT);
         //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.LEFT_EYE);
         drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.NOSE_BASE);
         //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.RIGHT_CHEEK);
         //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.RIGHT_EAR);
         //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.RIGHT_EYE);
-        //drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.MOUTH_RIGHT);
+        drawLandmarkPosition(canvas, face, FirebaseVisionFaceLandmark.MOUTH_RIGHT);
 
-        drawContour(canvas, face, FirebaseVisionFaceContour.LOWER_LIP_TOP);
-        drawContour(canvas, face, FirebaseVisionFaceContour.UPPER_LIP_BOTTOM);
-        drawContour(canvas, face, FirebaseVisionFaceContour.RIGHT_EYE);
-        drawContour(canvas, face, FirebaseVisionFaceContour.LEFT_EYE);
-        drawContour(canvas, face, FirebaseVisionFaceContour.FACE);
-//        drawContour(canvas, face, FirebaseVisionFaceContour.NOSE_BRIDGE);
+        //drawContour(canvas, face, FirebaseVisionFaceContour.LOWER_LIP_TOP);
+        //drawContour(canvas, face, FirebaseVisionFaceContour.UPPER_LIP_BOTTOM);
+        //drawContour(canvas, face, FirebaseVisionFaceContour.RIGHT_EYE);
+        //drawContour(canvas, face, FirebaseVisionFaceContour.LEFT_EYE);
+        //drawContour(canvas, face, FirebaseVisionFaceContour.FACE);
+        //drawContour(canvas, face, FirebaseVisionFaceContour.NOSE_BRIDGE);
     }
 
     private void drawLandmarkPosition(Canvas canvas, FirebaseVisionFace face, int landmarkID) {
