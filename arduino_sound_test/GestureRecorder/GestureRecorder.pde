@@ -35,7 +35,7 @@ final color ZCOLOR = color(255, 183, 0, 200);
 final color [] SENSOR_VALUE_COLORS = { XCOLOR, YCOLOR, ZCOLOR };
 final color DEFAULT_BACKGROUND_COLOR = color(44, 42, 41);
 final color RECORDING_BACKGROUND_COLOR = color(80, 0, 0);
-final int DISPLAY_TIMEWINDOW_MS = 1000 * 30; // 30 secs
+final int DISPLAY_TIMEWINDOW_MS = 1000 * 3; // 3 secs
 
 final int MIN_SENSOR_VAL = 0;
 final int MAX_SENSOR_VAL = 1023;
@@ -401,7 +401,7 @@ void serialEvent (Serial myPort) {
         _displaySensorData.remove(0);
       }
      
-      _printWriterAllData.println(accelSensorData.toCsvString());
+      //_printWriterAllData.println(accelSensorData.toCsvString());
       
       redraw();
     }

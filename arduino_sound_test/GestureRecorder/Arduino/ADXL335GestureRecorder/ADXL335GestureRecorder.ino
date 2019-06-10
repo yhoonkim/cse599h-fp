@@ -24,12 +24,12 @@ void loop() {
 
   // the timestamp is the number of milliseconds since bootup
   // it must be an unsigned long (or risk overflow)
-  unsigned long arduinoTimestamp = millis(); // https://www.arduino.cc/reference/en/language/functions/time/millis/
+  unsigned long arduinoTimestamp = micros(); // https://www.arduino.cc/reference/en/language/functions/time/millis/
   
   int accelX = analogRead(ACCELX_INPUT);
-  delay(1); // recall that we want to delay by 1ms between consecutive analogReads
+//  delay(1); // recall that we want to delay by 1ms between consecutive analogReads
   int accelY = analogRead(ACCELY_INPUT);
-  delay(1); // recall that we want to delay by 1ms between consecutive analogReads
+//  delay(1); // recall that we want to delay by 1ms between consecutive analogReads
   int accelZ = analogRead(ACCELZ_INPUT);
 
   // Print values to serial
