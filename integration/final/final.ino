@@ -136,9 +136,6 @@ void loop(void)
     z = parsefloat(packetbuffer+10);
     Serial.print("Face\t");
     Serial.print(x); Serial.println();
-    //Serial.print(x); Serial.print('\t');
-    //Serial.print(y); Serial.print('\t');
-    //Serial.print(z); Serial.println();;
     faceCounter += 1;
 
     for (int i=0; i<5; i++){
@@ -150,12 +147,11 @@ void loop(void)
   }
   if (len <= 0 && soundCounter > 3000 && !isMoving) {
     //If there is no face info, follow the sound info
+
+
     sumSoundL += abs(soundL - 465);
     sumSoundR += abs(soundR - 465);
-//    Serial.print(soundL);
-//    Serial.print(",");
-//    Serial.print(soundR);
-//    Serial.println();
+
     counter += 1 ;
     if (counter % 500 == 0){
       diffs[0] = - sumSoundR + sumSoundL;
@@ -173,10 +169,6 @@ void loop(void)
       Serial.print(accAmp);
       Serial.print(",");
       Serial.print(diffTotal);
-//      Serial.print(",");
-//      Serial.print(sumSoundR);
-//      Serial.print(",");
-//      Serial.print(sumSoundL);
       Serial.println();
       if ( accAmp < AMP_TH ){
         soundFrom = -999;
@@ -196,8 +188,6 @@ void loop(void)
       sumSoundL = 0;
     }
   }
-
-//  Serial.println(isMoving);
 
   if( (int)x < 5 && (int)x > -5){
     x = 0;
@@ -226,31 +216,21 @@ void loop(void)
 
 void turnTable(bool isUpdate, int newTargetAngle){
   if (!isUpdate) {
-    
+
     if (motorCounter >= 50){
       motorCounter = 0;
       int currentAngle = lidServo.read();
       if (abs(currentAngle - targetAngle) < 2){
         isMoving = false;
         return;
-//        Serial.println("done");
       }
-      
+
       int sign = (targetAngle - currentAngle) / abs(targetAngle - currentAngle);
       int nextAngle = currentAngle + sign * min(abs(targetAngle - currentAngle), stepAngle);
-//      
-//      Serial.print(targetAngle);
-//      Serial.print(",");
-//      Serial.println(nextAngle);
 
       lidServo.write(nextAngle);
-
-      
-
-      
     }
   } else {
-//    isWorking = true;
     targetAngle = newTargetAngle;
     Serial.println(newTargetAngle);
   }
